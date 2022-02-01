@@ -10,6 +10,9 @@ function startup() {
     children.forEach(picker =>
         addEventListener("input", updateColor, false),
         addEventListener("change", updateColor, false));
+
+    //just to get colors on them on load
+    updateColor();
 }
 
 function updateColor(event) {
@@ -17,6 +20,7 @@ function updateColor(event) {
     var palettes = Array.from($("#activepalette").children('input'));
     var mirrors = Array.from($("#zombiepalette").children('.colorblock'));
 
+    //iterate through each one and apply color value to div
     for(i = 0; i < palettes.length; i++){
         $(mirrors[i]).css({"backgroundColor":palettes[i].value});
     }
