@@ -1,0 +1,12 @@
+@font-face {
+  font-family: mercado;
+  src: url(SupermercadoOne-Regular.ttf);
+}
+
+:root {
+  --maincolor1: #0b486b;
+  --headercolor1: #3b8686;
+  --contentcolor1: #79BD9A;
+  --textcolor1: white;
+  --alttextcolor1: #a8dba8;
+}
