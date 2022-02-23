@@ -1,62 +1,86 @@
 @import url("sitebuild.css");
-
-#wrapper{
+#wrapper {
     width: 80%;
+    margin-top: 0px;
     margin-left: auto;
     margin-right: auto;
-    background-color: var(--maincontent1);
+    padding: 2%;
+    background-color: var(--maincolor1);
     height: auto;
 }
 
-body{
-    background-color: var(--maincolor1);
+body {
+    background-color: var(--headercolor1);
     color: var(--textcolor1);
     margin: 0px;
     font-family: mercado;
 }
 
-main{
+main {
     margin-top: 1vh;
+    height: 80vh;
+    padding-left: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
-a{
+a {
     color: var(--textcolor1);
     text-decoration: none;
 }
 
-header{
-    background-color: var(--headercolor1);
+header {
+    background-color: var(--contentcolor1);
     width: 100%;
     height: 8vh;
     padding-top: 5px;
     padding-bottom: 5px;
 }
 
-#logo{
+#logo {
     height: 8vh;
     width: auto;
     margin-left: 25%;
 }
 
-nav{
+nav {
     width: 50%;
 }
 
-nav ul{
+nav ul {
     display: block;
     margin: 0px;
 }
 
-nav ul li{
+nav ul li {
     display: inline;
     margin-left: 2%;
     margin-top: 2px;
     font-size: 1.6em;
 }
 
-.colorblock{
+.colorblock {
     height: 12vh;
-    width: 12%;
+    width: 20%;
+    margin: 0px;
     display: inline-block;
     background-color: var(--contentcolor1);
 }
+
+.leftside {
+    float: left;
+    width: 45%;
+}
+
+.rightside {
+    float: right;
+    width: 55%;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.modpalette1,
+.modpalette2,
+.modpalette3 {}

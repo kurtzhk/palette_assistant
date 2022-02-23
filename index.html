@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,53 +9,63 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="scripts/colorUpdater.js"></script>
     <title>Palette Assistant</title>
-  </head>
+</head>
 
-  <body>
+<body>
     <header>
-      <nav>
-        <ul>
-          <li>
-            <img
-              id="logo"
-              src="images/palette.svg"
-              alt="Palette Assistant Logo"
-            />
-          </li>
-          <li><a href="index.html"> About </a></li>
-          <li><a href=""> GitHub </a></li>
-        </ul>
-      </nav>
+        <nav>
+            <ul>
+                <li>
+                    <img id="logo" src="images/palette.svg" alt="Palette Assistant Logo" />
+                </li>
+                <li><a href="index.html"> About </a></li>
+                <li>
+                    <a href="https://github.com/kurtzhk/palette_assistant"> GitHub </a>
+                </li>
+            </ul>
+        </nav>
     </header>
+
     <div id="wrapper">
-      <main>
-        <div id="activepalette">
-          <label for="active1">Active Palette:</label>
-          <input type="color" id="active1" value="#69D2E7" />
+        <main>
+            <div class="leftside">
+                <div id="activepalette">
+                    <label for="active1">Active Palette:</label>
+                    <input type="color" id="active1" value="#69D2E7" />
 
-          <label for="active2"></label>
-          <input type="color" id="active2" value="#A7DBD8" />
+                    <label for="active2"></label>
+                    <input type="color" id="active2" value="#A7DBD8" />
 
-          <label for="active3"></label>
-          <input type="color" id="active3" value="#E0E4CC" />
+                    <label for="active3"></label>
+                    <input type="color" id="active3" value="#E0E4CC" />
 
-          <label for="active4"></label>
-          <input type="color" id="active4" value="#F38630" />
+                    <label for="active4"></label>
+                    <input type="color" id="active4" value="#F38630" />
 
-          <label for="active5"></label>
-          <input type="color" id="active5" value="#FA6900" />
-        </div>
-
-        <div id="zombiepalette">
-          <div class="colorblock"></div>
-          <div class="colorblock"></div>
-          <div class="colorblock"></div>
-          <div class="colorblock"></div>
-          <div class="colorblock"></div>
-        </div>
-      </main>
+                    <label for="active5"></label>
+                    <input type="color" id="active5" value="#FA6900" />
+                </div>
+            </div>
+            <div class="rightside">
+              <!--DONT add whitespace between these cuz theyre inline block-->
+                <div id="basepalette">
+                  <div class="colorblock"></div><div class="colorblock"></div><div class="colorblock"></div><div class="colorblock"></div><div class="colorblock"></div>
+                </div>
+                <div id="modpalette1">
+                    <div class="colorblock"></div><div class="colorblock"></div><div class="colorblock"></div><div class="colorblock"></div><div class="colorblock"></div>
+                </div>
+                <div id="modpalette2">
+                  <div class="colorblock"></div><div class="colorblock"></div><div class="colorblock"></div><div class="colorblock"></div><div class="colorblock"></div>
+              </div>
+              <div id="modpalette3">
+                <div class="colorblock"></div><div class="colorblock"></div><div class="colorblock"></div><div class="colorblock"></div><div class="colorblock"></div>
+            </div>
+            </div>
+            <div class="clearfix"></div>
+        </main>
     </div>
-  </body>
+</body>
 
-  <footer></footer>
+<footer></footer>
+
 </html>
