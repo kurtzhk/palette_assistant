@@ -7,6 +7,8 @@
     padding: 2%;
     background-color: var(--maincolor1);
     height: auto;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 body {

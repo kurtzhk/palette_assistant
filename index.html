@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="scripts/siteActions.js"></script>
     <script src="scripts/colorUpdater.js"></script>
     <title>Palette Assistant</title>
 </head>
@@ -45,6 +46,21 @@
                     <label for="active5"></label>
                     <input type="color" id="active5" value="#FA6900" />
                 </div>
+
+                <div id="schemeBtn" class="dropdown">
+                    <input type="color" id="generate" value="#FFFFFF" />
+
+                    <button class="dropbtn">Generate Palette</button>
+                    <div class="dropdown-content">
+                      <a value="monoc">Monochrome</a>
+                      <a value="analo">Analogous</a>
+                      <a value="compl">Complementary</a>
+                      <a value="scomp">Split Complementary</a>
+                      <a value="triad">Triadic</a>
+                      <a value="square">Square</a>
+                      <a value="tetra">Tetradic</a>
+                    </div> 
+                </div> 
             </div>
             <div class="rightside">
               <!--DONT add whitespace between these cuz theyre inline block-->

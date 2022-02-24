@@ -48,3 +48,9 @@ function protanopia(palettes, pal) {
 function tritanopia(palettes, pal) {
     $(pal[i]).css({ "backgroundColor": palettes[i].value });
 }
+
+function generateScheme() {
+    //should take the color from the lonely color box
+    //and the forms input
+    //and use it to generate a palette
+}
