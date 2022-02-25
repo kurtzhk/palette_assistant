@@ -1,1 +1,3 @@
-## tomfoolery (does edditing this add me to the repo?)
+## Color Palette Assistant
+
+### HCI Winter 2022
