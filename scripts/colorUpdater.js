@@ -28,25 +28,74 @@ function updateColor(event) {
         //coloring the pickers
         $(palettes[i]).css({ "backgroundColor": palettes[i].value });
         $(basepalette[i]).css({ "backgroundColor": palettes[i].value });
-
-        deuteranopia(palettes, pal1);
-        protanopia(palettes, pal2);
-        tritanopia(palettes, pal3);
     }
+    protanopia(palettes, pal1);
+    deuteranopia(palettes, pal2);
+    tritanopia(palettes, pal3);
+}
+
+function protanopia(palettes, pal) {
+    applyColorblind(palettes, pal, [
+        [0.367322,0.860646,-0.227968],
+        [0.280085,0.672501,0.047413],
+        [-0.011820,0.042940,0.968881]])
 }
 
 function deuteranopia(palettes, pal) {
     //palettes[i].value should be modified by the matrix multi.
     //and then applied to the backgound color V
-    $(pal[i]).css({ "backgroundColor": palettes[i].value });
-}
-
-function protanopia(palettes, pal) {
-    $(pal[i]).css({ "backgroundColor": palettes[i].value });
+    applyColorblind(palettes, pal, [
+        [0.152286,1.052583,-0.204868],
+        [0.114503,0.786281,0.099216],
+        [-0.003882,-0.048116,1.051998]])
 }
 
 function tritanopia(palettes, pal) {
-    $(pal[i]).css({ "backgroundColor": palettes[i].value });
+    applyColorblind(palettes, pal, [
+        [1.255528,-0.076749,-0.178779],
+        [-0.078411,0.930809,0.147602],
+        [0.004733,0.691367,0.303900]])
+}
+
+function applyColorblind(palettes, pal, colorblindMatrix) {
+    const inputColors = new Array(palettes.length);
+    const outputColors = new Array(palettes.length);
+    for (i = 0; i < palettes.length; i++) {
+        var inputColor = parseInt(palettes[i].value.substring(1), 16);
+        //console.log(inputColor);
+        //console.log(palettes[i].value);
+        inputColors[i] = new Array(3);
+        outputColors[i] = new Array(3);
+        inputColors[i][2] = inputColor % 256;
+        inputColor = inputColor / 256;
+        inputColor = Math.floor(inputColor);
+        inputColors[i][1] = inputColor % 256;
+        inputColor = inputColor / 256;
+        inputColor = Math.floor(inputColor);
+        inputColors[i][0] = inputColor % 256;
+    }
+    //console.log(inputColors);
+    for (i = 0; i < palettes.length; i++) {
+        for (j = 0; j < 3; j++) {
+            var colorToOutput = 0;
+            for (k = 0; k < 3; k++) {
+                colorToOutput = colorToOutput + (inputColors[i][k] * colorblindMatrix[k][j]);
+            }
+            colorToOutput = Math.min(Math.max(colorToOutput, 0), 255)
+            outputColors[i][j] = colorToOutput;
+        }
+        var compositeColor = Math.round(outputColors[i][0]);
+        compositeColor *= 256;
+        compositeColor += Math.round(outputColors[i][1]);
+        compositeColor *= 256;
+        compositeColor += Math.round(outputColors[i][2]);
+        var compositeColor = compositeColor.toString(16);
+        outputColors[i] = "#" + compositeColor;
+    }
+    console.log(outputColors);
+    for (i = 0; i < palettes.length; i++) {
+        $(pal[i]).css({ "backgroundColor": outputColors[i] });
+    }
 }
 
 function generateScheme() {
@@ -54,3 +103,4 @@ function generateScheme() {
     //and the forms input
     //and use it to generate a palette
 }
+
