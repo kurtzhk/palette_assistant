@@ -91,4 +91,5 @@ nav ul li {
     padding: 1rem;
     position: absolute;
     bottom: 0px;
+    user-select: none;
 }
