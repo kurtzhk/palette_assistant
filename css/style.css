@@ -67,6 +67,7 @@ nav ul li {
     margin: 0px;
     display: inline-block;
     background-color: var(--contentcolor1);
+    position: relative;
 }
 
 .leftside {
@@ -83,6 +84,11 @@ nav ul li {
     clear: both;
 }
 
-.modpalette1,
-.modpalette2,
-.modpalette3 {}
+.lock img,
+.unlock img {
+    height: 30%;
+    width: auto;
+    padding: 1rem;
+    position: absolute;
+    bottom: 0px;
+}
