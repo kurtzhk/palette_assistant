@@ -26,9 +26,13 @@ function updateColor(event) {
     //iterate through each one and apply color value to div
     for (i = 0; i < palettes.length; i++) {
         //coloring the pickers
-        $(palettes[i]).css({ "backgroundColor": palettes[i].value });
-        $(basepalette[i]).css({ "backgroundColor": palettes[i].value });
+        //but not if it has a lock
+        if (basepalette[i].classList.contains("unlock")) {
+            $(palettes[i]).css({ "backgroundColor": palettes[i].value });
+            $(basepalette[i]).css({ "backgroundColor": palettes[i].value });
+        }
     }
+
     protanopia(palettes, pal1);
     deuteranopia(palettes, pal2);
     tritanopia(palettes, pal3);
@@ -36,30 +40,33 @@ function updateColor(event) {
 
 function protanopia(palettes, pal) {
     applyColorblind(palettes, pal, [
-        [0.367322,0.860646,-0.227968],
-        [0.280085,0.672501,0.047413],
-        [-0.011820,0.042940,0.968881]])
+        [0.367322, 0.860646, -0.227968],
+        [0.280085, 0.672501, 0.047413],
+        [-0.011820, 0.042940, 0.968881]
+    ])
 }
 
 function deuteranopia(palettes, pal) {
-    //palettes[i].value should be modified by the matrix multi.
-    //and then applied to the backgound color V
     applyColorblind(palettes, pal, [
-        [0.152286,1.052583,-0.204868],
-        [0.114503,0.786281,0.099216],
-        [-0.003882,-0.048116,1.051998]])
+        [0.152286, 1.052583, -0.204868],
+        [0.114503, 0.786281, 0.099216],
+        [-0.003882, -0.048116, 1.051998]
+    ])
 }
 
 function tritanopia(palettes, pal) {
     applyColorblind(palettes, pal, [
-        [1.255528,-0.076749,-0.178779],
-        [-0.078411,0.930809,0.147602],
-        [0.004733,0.691367,0.303900]])
+        [1.255528, -0.076749, -0.178779],
+        [-0.078411, 0.930809, 0.147602],
+        [0.004733, 0.691367, 0.303900]
+    ])
 }
 
 function applyColorblind(palettes, pal, colorblindMatrix) {
     const inputColors = new Array(palettes.length);
     const outputColors = new Array(palettes.length);
+    var basepalette = Array.from($("#basepalette").children('.colorblock'));
+
     for (i = 0; i < palettes.length; i++) {
         var inputColor = parseInt(palettes[i].value.substring(1), 16);
         //console.log(inputColor);
@@ -74,6 +81,7 @@ function applyColorblind(palettes, pal, colorblindMatrix) {
         inputColor = Math.floor(inputColor);
         inputColors[i][0] = inputColor % 256;
     }
+
     //console.log(inputColors);
     for (i = 0; i < palettes.length; i++) {
         for (j = 0; j < 3; j++) {
@@ -92,15 +100,16 @@ function applyColorblind(palettes, pal, colorblindMatrix) {
         var compositeColor = compositeColor.toString(16);
         outputColors[i] = "#" + compositeColor;
     }
-    console.log(outputColors);
+
     for (i = 0; i < palettes.length; i++) {
-        $(pal[i]).css({ "backgroundColor": outputColors[i] });
+        if (basepalette[i].classList.contains("unlock")) {
+            $(pal[i]).css({ "backgroundColor": outputColors[i] });
+        }
     }
 }
 
-function generateScheme() {
+function generate(scheme) {
     //should take the color from the lonely color box
     //and the forms input
     //and use it to generate a palette
 }
-
